@@ -7,5 +7,5 @@
  *
  */
 
-public class Lesha10 {
+public class SongComplectation {
 }

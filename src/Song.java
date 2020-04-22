@@ -7,7 +7,7 @@
  *
  */
 
-public class User {
+public class Song {
     private String name;
     private  boolean isApprove;
 
@@ -35,7 +35,7 @@ public class User {
         isApprove = approve;
     }
 
-    public User(String name, boolean isApprove) {
+    public Song(String name, boolean isApprove) {
         this.name = name;
         this.isApprove = isApprove;
     }

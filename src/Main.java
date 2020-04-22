@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-    static List<User> users=new ArrayList<>();
+    static List<Song> users=new ArrayList<>();
 
     public static void main(String[] args) {
         getUsers();
         System.out.println(users);
-        List<User> users2=users.stream().filter(x -> x.isApprove()).collect(Collectors.toList());
+        List<Song> users2=users.stream().filter(x -> x.isApprove()).collect(Collectors.toList());
         System.out.println(users2);
         users.stream().filter(x -> x.isApprove()).forEach(System.out::println);
     }
@@ -29,7 +29,7 @@ public class Main {
             if(i%3!=0){
                 q=false;
             }
-            users.add(new User(s,q));
+            users.add(new Song(s,q));
         }
     }
 }
