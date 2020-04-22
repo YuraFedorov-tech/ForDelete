@@ -8,28 +8,39 @@
  */
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.stream.Collector;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 public class Main {
-    static List<User> users=new ArrayList<>();
+    static Set<Song> songs = new HashSet<>();
 
     public static void main(String[] args) {
         getUsers();
-        System.out.println(users);
-        List<User> users2=users.stream().filter(x -> x.isApprove()).collect(Collectors.toList());
-        System.out.println(users2);
-        users.stream().filter(x -> x.isApprove()).forEach(System.out::println);
-    }
+        List<SongComplectation> songComplectationList = new ArrayList<>();
+        songComplectationList.add(new SongComplectation("123", songs));
+        songComplectationList.add(new SongComplectation("234", songs));
+        System.out.println(songComplectationList);
 
+
+        songComplectationList.forEach(list->
+                list.setSongs(list.getSongs().stream().filter(song -> song.isApprove()).collect(toSet()))
+
+        );
+        System.out.println(songComplectationList);
+    }
     private static void getUsers() {
-        for (int i=0;i<10;i++){
-            String s=Integer.toString(i);
-            boolean q=true;
-            if(i%3!=0){
-                q=false;
+        for (int i = 0; i < 10; i++) {
+            String s = Integer.toString(i);
+            boolean q = false;
+            if (i % 3 == 0) {
+                q = true;
             }
-            users.add(new User(s,q));
+            songs.add(new Song(s, q));
         }
     }
 }
